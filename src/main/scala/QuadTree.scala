@@ -1,3 +1,5 @@
+package quadtree
+
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
 import scala.math.{pow, max, abs}
@@ -71,7 +73,7 @@ class QuadTree[A](K: Int = 2, center: Point = Point(0, 0), halfDim: Double = 100
 
     val knnElements = new mutable.PriorityQueue[Element]()(distanceOrdering)
     root.knnSearch(p, k, knnElements) // populates knnElements
-    knnElements.to[ListBuffer].map(Element.unapply(_).get)
+    knnElements.to(ListBuffer).map(Element.unapply(_).get)
   }
 
   def dfsPrint: Unit = root.dfsPrint()

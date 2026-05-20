@@ -1,3 +1,5 @@
+package quadtree
+
 object Main extends App {
 
   /**

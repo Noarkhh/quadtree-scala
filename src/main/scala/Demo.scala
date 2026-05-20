@@ -1,3 +1,5 @@
+package quadtree
+
 import java.io.{File, PrintWriter}
 
 import scala.collection.mutable.ListBuffer
