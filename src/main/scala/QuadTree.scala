@@ -69,6 +69,9 @@ class QuadTree[A](K: Int = 2, center: Point = Point(0, 0), halfDim: Double = 100
 
     object distanceOrdering extends Ordering[Element] {
       def compare(a: Element, b: Element): Int = a.position.distance(p) compare b.position.distance(p)
+      // JDK 26 added default max/min to java.util.Comparator, conflicting with Ordering's
+      override def max[U <: Element](x: U, y: U): U = if (compare(x, y) >= 0) x else y
+      override def min[U <: Element](x: U, y: U): U = if (compare(x, y) <= 0) x else y
     }
 
     val knnElements = new mutable.PriorityQueue[Element]()(distanceOrdering)
